@@ -13,4 +13,7 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
     if not os.path.isdir(target_dir):
         return f'Error: "{directory}" is not a directory'
 
+    for i in target_dir:
+
+
     return f'Success: "{directory}" is within the working directory'
