@@ -27,6 +27,6 @@ messages = [
     },
 ]
 
-generate_content(client, messages, args)
+generate_content(client, messages, args.verbose)
 
 
