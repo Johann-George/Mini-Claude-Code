@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import argparse
 from helper import generate_content
+from prompts import system_prompt
 
 
 load_dotenv()
@@ -22,9 +23,8 @@ parser.add_argument("--verbose", action="store_true", help="Enable verbose outpu
 args = parser.parse_args()
 
 messages = [
-    {
-        "role": "user", "content": args.user_prompt,
-    },
+    {"role": "system", "content": system_prompt},
+    {"role": "user", "content": args.user_prompt},
 ]
 
 generate_content(client, messages, args.verbose)
