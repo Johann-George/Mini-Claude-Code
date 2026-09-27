@@ -1,4 +1,5 @@
 import os
+import sys
 from dotenv import load_dotenv
 from openai import OpenAI
 import argparse
@@ -27,6 +28,12 @@ messages = [
     {"role": "user", "content": args.user_prompt},
 ]
 
-generate_content(client, messages, args.verbose)
+for _ in range(20):
+    message = generate_content(client, messages, args.verbose)
+    if message is None:
+        sys.exit(0)
+
+print("The model took too many iterations to provide an answer")
+sys.exit(1)
 
 
